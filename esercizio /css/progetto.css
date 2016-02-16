@@ -1,0 +1,70 @@
+
+
+body{
+	font-family: 'Karla', sans-serif;
+	font-size: 15px;
+	text-align: justify;	
+
+}
+.foto{
+position:relative;
+
+}
+.logo{
+	
+	font-size: 30px;
+	font-family: font-family: 'Open Sans', sans-serif;
+	color: #00a989;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50px, -50px);
+	margin: 0 -50% 0 0;
+}
+
+.foto img{
+		height: 300px;
+		background-image: url(png/header.png);	
+		width:100%;
+}
+
+
+.link {
+	color:#00a989;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+
+.link p{
+	color:black;
+	font-size: 15px;
+	top:150px;
+
+
+}
+
+.margin-top-10{
+	margin-top: 30px;
+	
+}
+
+.margin-bottom-10{
+	margin-bottom: 70px;
+
+} 
+
+.row2 a{
+	text-decoration: overline;
+	color: #00a989;
+	font-size: 20px;
+}
+
+.close{
+	color:#00a989;
+}
+
+h4{
+
+	color:#00a989;
+}
