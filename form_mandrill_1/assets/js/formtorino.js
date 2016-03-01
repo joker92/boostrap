@@ -1,4 +1,38 @@
 $().ready(function(){
+//la var sotto fino all each va messo in testa a tutto perche va inserito al caricamento della pagina 
+	var status=$('#status').val();
+
+	var selectiOption=
+	{"status":{0:"stundent",1:"employed",2:"unemployed" },
+	"gender":{3:"male",4:"female",5:"other"}
+
+}
+
+
+//primo each mi posiziono su status e su gender
+$.each( selectiOption, function( key, value ) {
+	//sul secondo each vado a vedere cosa ce dentro a status e gender quindi (0:student ,1:employed)
+	$.each(value, function(secondKey ,secondValue){
+			if(key=="status"){
+				$('#status').append($('<option>',{
+						value: secondKey,
+						text: secondValue
+				}));
+				}
+				if(key=="gender"){
+
+				$('#gender').append($('<option>',{
+						value: secondKey,
+						text: secondValue
+				}));
+				}
+	})
+	
+});
+
+
+
+
 		//controlla se e un numero di telefono 
 		function cheekphone(tel){
 			if($.isNumeric(tel)){
@@ -30,24 +64,24 @@ function sendTheMail(param,key){
 
 
 //serve per fare la chimata ajax per le api (servono per chiamare file json oppure per inviare massaggi)
-$.ajax({
-	type:"POST",
-	url: "https://mandrillapp.com/api/1.0/messages/send.json",
-	data:{
-		'key':key,
-		'message':{
-			'from_email':param.message.from_email,
-			'to':param.message.to,
-			"subject":param.message.subject,
-			"text":param.message.text
-		}
-	}
+//** $.ajax({
+	//type:"POST",
+	//url: "https://mandrillapp.com/api/1.0/messages/send.json",
+	//data:{
+	//	'key':key,
+	//	'message':{
+	//		'from_email':param.message.from_email,
+	//		'to':param.message.to,
+	//		"subject":param.message.subject,
+	//		"text":param.message.text
+	//	}
+//	}
 
-	}).done(function(response){
-		console.log(response);
+//	}).done(function(response){
+//		console.log(response);
 
-	});
-
+//	});
+console.log('SENDING THE EMAIL');
 }
 
 //QUANDO NELLA CONSOLE SCHIACCCIAMO QULSIASI TASTO NELLA CONSOLE VIENE SCRITTO LA PAROLA REGISTRATA E LA TIENE IN MEMORIA 
@@ -71,6 +105,12 @@ $('#myform').on('submit', function(){
 		//selettore di jquery testo
 		var text = $('#text').val();
 		console.log(text);
+		//selettore del status per il controllo del if sotto 
+		var status=$('#status').val();
+		//selettore del gender per il controllo del if sotto
+		var gender=$('#gender').val();
+
+
 		//richiama la funzione per vedere se e un numero
 		cheekphone(tel);
 		isValidEmailAddress(email);
@@ -78,7 +118,7 @@ $('#myform').on('submit', function(){
 
 	//  campi indicati sotto != ""  se i campi sono compilati c sono stampali else i campi sono vuoti
 
-	if(nome != "" && email !="" && comp !="" && tel !="" && text !="" && cheekphone(tel) && isValidEmailAddress(email)){
+	if(nome != "" && email !="" && comp !="" && tel !="" && text !="" && cheekphone(tel) && isValidEmailAddress(email) && status !="" && gender !=""){
 		var param={
 			"message":{
 
@@ -92,7 +132,7 @@ $('#myform').on('submit', function(){
 		};
 
 
-			sendTheMail(param,key);
+		sendTheMail(param,key);
 
 
 
@@ -101,7 +141,7 @@ $('#myform').on('submit', function(){
 		console.log('non puoi madare l email');
 	}
 //serve per impedire il refresch
-	return false;
+return false;
 
 
 });
