@@ -2,13 +2,14 @@ body,html{
 		width: 100%;
 		height: 100%;
 		margin:0;
+
 	}
 
 body{
 		background-image:url(../img/background.jpg) ;
 	  	background-size: 100% 100%;
 	  	font-family: 'Lato', sans-serif;
-	  	color: #fff;
+	  	color: #593434;
 }
 .wrapper{
 	padding-top: 200px;
@@ -24,4 +25,28 @@ body{
 h1{
 	color:82F200;
 	font-size: 50px;
+
+}
+h3{
+	color:white;
+}
+
+
+
+.select2-selection{
+	height: 40px !important;
+	padding: 6px 3px !important;
+}
+
+.select2-container{
+
+	margin-bottom: 10px !important;
+
+}
+
+
+.select2-selection_placeholder{
+	font-family: 'Lato',sans-serif !important;
+	color:#999999;
+	font-size: 18px;
 }

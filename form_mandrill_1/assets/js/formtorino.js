@@ -1,31 +1,36 @@
 $().ready(function(){
 //la var sotto fino all each va messo in testa a tutto perche va inserito al caricamento della pagina 
-	var status=$('#status').val();
+var status=$('#status').val();
 
-	var selectiOption=
-	{"status":{0:"stundent",1:"employed",2:"unemployed" },
-	"gender":{3:"male",4:"female",5:"other"}
+var selectiOption=
+{"status":{0:"stundent",1:"employed",2:"unemployed" },
+"gender":{3:"male",4:"female",5:"other"}
 
 }
+//cambiare stile della select importando la cdn in locale da select2
+
+$('#status').select2({placeholder: "Status",});
+$('#gender').select2({placeholder: "Gender",});
+
 
 
 //primo each mi posiziono su status e su gender
 $.each( selectiOption, function( key, value ) {
 	//sul secondo each vado a vedere cosa ce dentro a status e gender quindi (0:student ,1:employed)
 	$.each(value, function(secondKey ,secondValue){
-			if(key=="status"){
-				$('#status').append($('<option>',{
-						value: secondKey,
-						text: secondValue
-				}));
-				}
-				if(key=="gender"){
+		if(key=="status"){
+			$('#status').append($('<option>',{
+				value: secondKey,
+				text: secondValue
+			}));
+		}
+		if(key=="gender"){
 
-				$('#gender').append($('<option>',{
-						value: secondKey,
-						text: secondValue
-				}));
-				}
+			$('#gender').append($('<option>',{
+				value: secondKey,
+				text: secondValue
+			}));
+		}
 	})
 	
 });
@@ -107,8 +112,29 @@ $('#myform').on('submit', function(){
 		console.log(text);
 		//selettore del status per il controllo del if sotto 
 		var status=$('#status').val();
+		console.log(status);
 		//selettore del gender per il controllo del if sotto
 		var gender=$('#gender').val();
+
+		console.log(gender);
+
+		$.each( selectiOption, function( key, value ) {
+	// questo each serve per tradurre la chiaved ella select nella label della select
+	$.each(value, function(secondKey ,secondValue){
+		if(secondKey==status){
+			status=secondValue;
+		}
+		if(secondKey==gender){
+			gender=secondValue;
+
+		}
+
+	})
+	
+});
+			console.log("sto stampando la sostituzione di status e  Gender");
+			console.log(status);
+			console.log(gender);
 
 
 		//richiama la funzione per vedere se e un numero
@@ -137,6 +163,7 @@ $('#myform').on('submit', function(){
 
 
 		console.log('puoi mandare l email');
+			return false;
 	}else{
 		console.log('non puoi madare l email');
 	}
